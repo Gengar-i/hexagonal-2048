@@ -1,0 +1,158 @@
+:root {
+	--bg: #faf8ef;
+	--text: #776e65;
+	--panel: #bbada0;
+	--panel-text: #eee4da;
+	--button: #8f7a66;
+	--button-text: #f9f6f2;
+
+	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+	color: var(--text);
+	background: var(--bg);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	background: var(--bg);
+}
+
+.game {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 24px 16px;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+h1 {
+	margin: 0;
+	font-size: clamp(28px, 8vw, 44px);
+	line-height: 1;
+}
+
+.scores {
+	display: flex;
+	gap: 6px;
+}
+
+.score {
+	min-width: 72px;
+	padding: 6px 12px;
+	border-radius: 4px;
+	background: var(--panel);
+	text-align: center;
+}
+
+.score span {
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: var(--panel-text);
+}
+
+.score strong {
+	font-size: 22px;
+	color: #fff;
+}
+
+.toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin: 16px 0;
+}
+
+.toolbar p {
+	margin: 0;
+}
+
+button {
+	padding: 10px 16px;
+	border: 0;
+	border-radius: 4px;
+	background: var(--button);
+	color: var(--button-text);
+	font: inherit;
+	font-weight: bold;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.board {
+	position: relative;
+}
+
+.board canvas {
+	display: block;
+	width: 100%;
+	aspect-ratio: 13 / 15;
+	touch-action: none;
+	user-select: none;
+}
+
+.overlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	background: rgba(238, 228, 218, 0.73);
+	animation: fade-in 0.4s ease;
+}
+
+.overlay p {
+	margin: 0;
+	font-size: 48px;
+	font-weight: bold;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+}
+
+/* Mirrors the hex directions: W/S straight up/down, Q/E and A/D on the diagonals. */
+.keys {
+	display: grid;
+	grid-template-columns: repeat(3, 40px);
+	grid-template-rows: repeat(6, 18px);
+	justify-content: center;
+	gap: 4px 8px;
+	margin-top: 20px;
+}
+
+kbd {
+	display: grid;
+	place-items: center;
+	border-radius: 4px;
+	background: var(--panel);
+	color: #fff;
+	font-weight: bold;
+}
+
+.w { grid-area: 1 / 2 / 3 / 3; }
+.q { grid-area: 2 / 1 / 4 / 2; }
+.e { grid-area: 2 / 3 / 4 / 4; }
+.a { grid-area: 4 / 1 / 6 / 2; }
+.d { grid-area: 4 / 3 / 6 / 4; }
+.s { grid-area: 5 / 2 / 7 / 3; }
+
+.hint {
+	text-align: center;
+	font-size: 14px;
+}
